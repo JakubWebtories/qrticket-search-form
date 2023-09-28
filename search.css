@@ -1,0 +1,28 @@
+#search-form .inputs-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#search-form .input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#search-form input {
+  padding: 10px 20px;
+}
+
+#search-form button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: #fff;
+  background-color: #e30613;
+  border: 1px solid #e30613;
+  transition: all 0.3s;
+}
+
+#search-form button:hover {
+  color: #e30613;
+  background-color: #fff;
+}
