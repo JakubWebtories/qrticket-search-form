@@ -9,28 +9,59 @@
   <body>
     <form id="search-form" method="post">
       <div class="inputs-container">
+        
         <div class="input-wrapper">
-          <label for="name">Název</label>
-          <input type="text" id="name" name="name" required />
+          <label for="type-event">Typ události</label>
+          <div id="selected-items"></div>
+          <ul id="type-event">
+              <span class="dropdown-search-type">Vyberte typ</span>
+            <li>
+              <option value="koncert">Koncert</option>
+            </li>
+            <li>
+              <option value="divadlo">Divadlo</option>
+            </li>
+            <li>
+              <option value="hudba">Hudba</option>
+            </li>
+            <li>
+              <option value="festival">Festival</option>
+            </li>
+            <li>
+              <option value="sport">Sport</option>
+            </li>
+            <li>
+              <option value="kino">Kino</option>
+            </li>
+            <li>
+              <option value="party">Party</option>
+            </li>
+            <li>
+              <option value="on-line">On-line</option>
+            </li>
+          </ul>
+
         </div>
 
         <div class="input-wrapper">
-          <label for="date">Datum</label>
-          <input type="text" id="date" name="date" required />
+          <label for="date-start">Datum od</label>
+          <input type="date" id="date-start" name="date-start" />
+        </div>
+
+        <div class="input-wrapper">
+          <label for="date-end">Datum do</label>
+          <input type="date" id="date-end" name="date-end" />
         </div>
 
         <div class="input-wrapper">
           <label for="location">Lokace</label>
-          <input type="text" id="location" name="location" required />
-        </div>
-
-        <div class="input-wrapper">
-          <label for="price">Cena</label>
-          <input type="number" id="price" name="price" required />
+          <input type="text" id="location" name="location" />
         </div>
       </div>
       <button type="submit">Hledat</button>
     </form>
+
   </body>
   <script src="search.js"></script>
 </html>
+

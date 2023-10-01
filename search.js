@@ -1,18 +1,26 @@
+// Submit form
 let submitForm = document.querySelector("#search-form");
 
 submitForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const name = document.querySelector("#name").value;
-  const date = document.querySelector("#date").value;
-  const location = document.querySelector("#location").value;
-  const price = document.querySelector("#price").value;
+  // Combobox values - type event
+  const selectedTypeEvents = document.querySelectorAll("#selected-items option");
+  const valuesTypeEvents = Array.from(selectedTypeEvents).map(type => type.value)
 
+  // Dates - stard and end
+  const dateStart = document.querySelector("#date-start").value;
+  const dateEnd = document.querySelector("#date-start").value;
+
+  // Location
+  const location = document.querySelector('#location').value;
+
+  // Send object
   const data = {
-    name: name,
-    date: date,
-    location: location,
-    price: price,
+    typesEvent: valuesTypeEvents,
+    dateStart: dateStart,
+    dateEnd: dateEnd,
+    location: location
   };
 
   fetch("http://localhost:3000/formData", {
@@ -30,3 +38,37 @@ submitForm.addEventListener("submit", function (e) {
       console.error("Error:", error);
     });
 });
+
+// Multiple selection - type events
+const selectElement = document.querySelector("#type-event");
+const selectedItemsWrapper = document.querySelector("#selected-items");
+let selectedItemsValues = document.querySelectorAll("#type-event option");
+
+
+selectedItemsValues.forEach((item) => {
+  item.addEventListener('click', function(){
+    let cloneOption = this.cloneNode(true)
+    selectedItemsWrapper.appendChild(cloneOption)
+
+    // Call function which updates selected items
+    selectedItemsEvent();
+  })
+})
+
+// Handle delete item - type events
+function selectedItemsEvent () {
+  let selectedItems = document.querySelectorAll("#selected-items option");
+  selectedItems.forEach((selectedItem) => {
+    console.log(selectedItem)
+    selectedItem.addEventListener('click', function(e) {
+      e.target.remove();
+    })
+  })
+}
+
+// Dropdown
+let dropdown = document.querySelector('#search-form .dropdown-search-type')
+
+dropdown.addEventListener('click', function() {
+  selectElement.classList.toggle('active-dropdown')
+})
